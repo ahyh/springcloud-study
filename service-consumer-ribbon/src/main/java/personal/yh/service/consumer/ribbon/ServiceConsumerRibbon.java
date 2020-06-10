@@ -1,12 +1,14 @@
-package personal.yh.service.provider;
+package personal.yh.service.consumer.ribbon;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ServiceProviderB {
+public class ServiceConsumerRibbon {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServiceProviderB.class, args);
+        SpringApplication.run(ServiceConsumerRibbon.class, args);
     }
+
 }
