@@ -24,17 +24,6 @@ public class ServiceInstanceController {
     private LoadBalancerClient loadBalancerClient;
 
     /**
-     * 一种原始的方式来实现负载均衡————随机负载均衡
-     * 没有实现Ribbon的方式来实现负载均衡
-     */
-    @GetMapping(value = "/find/{serviceId}")
-    public String findService(@PathVariable("serviceId") String serviceId) {
-        String url = "http://" + serviceId + "/service/provider";
-        String result = restTemplate.getForObject(url, String.class);
-        return result;
-    }
-
-    /**
      * 根据serviceId选择一个实例的IP和port
      */
     @GetMapping(value = "/pick/{serviceId}")
@@ -42,5 +31,17 @@ public class ServiceInstanceController {
         //通过RibbonLoadBalancerClient选择ServiceInstance
         ServiceInstance serviceInstance = loadBalancerClient.choose(serviceId);
         return serviceInstance.getHost() + ":" + serviceInstance.getPort();
+    }
+
+    /**
+     * 一种原始的方式来实现负载均衡————随机负载均衡
+     * 没有实现Ribbon的方式来实现负载均衡
+     * 如果注入的RestTemplate没有加@LoadBalanced注解的此处不支持负载均衡，无法调用
+     */
+    @GetMapping(value = "/find/{serviceId}")
+    public String findService(@PathVariable("serviceId") String serviceId) {
+        String url = "http://" + serviceId + "/service/provider";
+        String result = restTemplate.getForObject(url, String.class);
+        return result;
     }
 }

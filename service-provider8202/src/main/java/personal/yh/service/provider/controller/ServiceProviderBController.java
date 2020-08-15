@@ -8,6 +8,6 @@ public class ServiceProviderBController {
 
     @GetMapping(value = "/service/provider")
     public String getServiceProvider() {
-        return "This is service provider BBBBBBBBB";
+        return "This is service provider BBB";
     }
 }
