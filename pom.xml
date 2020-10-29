@@ -11,12 +11,15 @@
 
     <modules>
         <module>eureka-server8101</module>
+        <module>eureka-server8102</module>
+        <module>eureka-server8103</module>
         <module>service-provider8201</module>
         <module>service-provider8202</module>
         <module>service-provider8203</module>
         <module>service-consumer-original</module>
         <module>service-consumer-ribbon</module>
         <module>service-consumer-custom</module>
+        <module>service-consumer-hystrix</module>
     </modules>
 
     <name>springcloud-study</name>
